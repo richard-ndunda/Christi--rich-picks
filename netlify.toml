@@ -1,0 +1,19 @@
+[build]
+  publish = "."
+
+[build.processing]
+  skip_processing = false
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+# Netlify Forms detects the form at deploy time. No server function is needed.

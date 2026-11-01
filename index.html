@@ -1,50 +1,112 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo List</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <main class="app">
-      <section class="todo-card">
-        <header class="header">
-          <p class="eyebrow">Daily planner</p>
-          <h1>To-do List</h1>
-        </header>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Christi Rich Picks helps you discover useful tech, fashion, home and everyday products in Kenya and around the world.">
+  <meta name="theme-color" content="#101b2b">
+  <title>Christi Rich Picks | Smart Finds, Better Choices</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <meta property="og:title" content="Christi Rich Picks | Smart Finds, Better Choices">
+  <meta property="og:description" content="Discover practical product finds, comparisons and buying guides.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/social-preview.svg">
+</head>
+<body>
+  <div class="announcement">Smart finds for everyday life · Kenya & beyond</div>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Christi Rich Picks home">
+      <span class="brand-mark">CR</span>
+      <span><strong>Christi Rich Picks</strong><small>SMART FINDS, BETTER CHOICES</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav id="mainNav">
+      <a href="#shop">Shop picks</a><a href="#guides">Buying guides</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="#shop">Explore picks <span>→</span></a>
+  </header>
 
-        <form id="todo-form" class="todo-form">
-          <label class="sr-only" for="todo-input">Add new task</label>
-          <input
-            id="todo-input"
-            type="text"
-            placeholder="What needs to be done?"
-            autocomplete="off"
-          />
-          <button type="submit">Add</button>
-        </form>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">THE SMARTER WAY TO SHOP</span>
+        <h1>Good finds.<br><em>Better choices.</em></h1>
+        <p>Thoughtfully selected products, practical buying tips and useful discoveries for everyday life — whether you're shopping in Kenya or abroad.</p>
+        <div class="hero-actions"><a class="button button-primary" href="#shop">Explore products <span>→</span></a><a class="text-link" href="#guides">Read our buying guides</a></div>
+        <div class="trust-row"><span>✓ Practical recommendations</span><span>✓ Clear product information</span></div>
+      </div>
+      <div class="hero-art" aria-label="Featured shopping categories">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="art-card art-card-main"><span class="art-icon">✦</span><small>THE EDIT</small><strong>Find what<br>fits your life.</strong><span class="art-line"></span><small>CURATED WITH CARE</small></div>
+        <div class="floating-tag tag-top">TECH & GADGETS</div><div class="floating-tag tag-bottom">STYLE · HOME · MORE</div>
+      </div>
+    </section>
 
-        <div class="toolbar">
-          <div class="filters" aria-label="Task filters">
-            <button class="filter-btn active" data-filter="all" type="button">All</button>
-            <button class="filter-btn" data-filter="active" type="button">Active</button>
-            <button class="filter-btn" data-filter="completed" type="button">Completed</button>
-          </div>
+    <section class="benefit-strip">
+      <div><span>01</span><strong>Useful discoveries</strong><small>Ideas worth exploring</small></div>
+      <div><span>02</span><strong>Smarter comparisons</strong><small>Know what to look for</small></div>
+      <div><span>03</span><strong>Shop with confidence</strong><small>Check details before buying</small></div>
+    </section>
 
-          <button id="clear-completed" class="secondary-btn" type="button">
-            Clear completed
-          </button>
+    <section class="section" id="shop">
+      <div class="section-heading">
+        <div><span class="eyebrow">THE COLLECTION</span><h2>Explore our picks</h2><p>Browse useful finds across the categories you care about.</p></div>
+        <span class="collection-note">Updated selections · 2026</span>
+      </div>
+      <div class="shop-controls">
+        <label class="search-box"><span>⌕</span><input id="productSearch" type="search" placeholder="Search products..." aria-label="Search products"></label>
+        <div class="category-filters" id="categoryFilters" aria-label="Filter by category">
+          <button class="filter active" data-category="All">All picks</button>
+          <button class="filter" data-category="Tech">Tech</button>
+          <button class="filter" data-category="Fashion">Fashion</button>
+          <button class="filter" data-category="Home">Home</button>
+          <button class="filter" data-category="Beauty">Beauty</button>
+          <button class="filter" data-category="Everyday">Everyday</button>
         </div>
+      </div>
+      <div class="product-grid" id="productGrid" aria-live="polite"><div class="loading">Loading our picks…</div></div>
+      <p class="catalogue-note">Product availability, prices, delivery and return terms can change. Always confirm the details on the retailer's website before ordering.</p>
+    </section>
 
-        <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+    <section class="editorial" id="guides">
+      <div class="editorial-art"><div class="guide-stamp">THE<br>SMART<br>BUYING<br>GUIDE</div><span>THOUGHTFUL SHOPPING STARTS HERE</span></div>
+      <div class="editorial-copy"><span class="eyebrow">BUY BETTER, NOT JUST MORE</span><h2>A little research<br>goes a long way.</h2><p>Our buying guides are designed to help you compare the features that matter, understand what to check and make decisions that suit your needs and budget.</p><a href="#contact" class="text-link">Suggest a buying guide <span>→</span></a></div>
+    </section>
 
-        <footer class="status-bar">
-          <span id="items-left">0 items left</span>
-        </footer>
-      </section>
-    </main>
+    <section class="section about-section" id="about">
+      <div><span class="eyebrow">OUR PURPOSE</span><h2>Shopping should feel<br><em>clear, not complicated.</em></h2></div>
+      <div><p>Christi Rich Picks is an independent product discovery platform sharing practical recommendations across tech, fashion, home essentials, beauty and everyday finds.</p><p>We aim to make it easier to discover options and know what to check before you buy. We do not manufacture or sell the products listed; purchases are completed with the relevant retailer.</p></div>
+    </section>
 
-    <script src="script.js"></script>
-  </body>
+    <section class="newsletter-band">
+      <div><span class="eyebrow">LET'S MAKE BETTER FINDS</span><h2>What should we<br>review next?</h2><p>Tell us what you're looking for and we'll consider it for a future guide.</p></div>
+      <a class="button button-light" href="#contact">Send a suggestion <span>→</span></a>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="section-heading"><div><span class="eyebrow">GET IN TOUCH</span><h2>We'd love to hear from you.</h2><p>Questions, product suggestions or partnership enquiries are welcome.</p></div></div>
+      <div class="contact-layout">
+        <div class="contact-details"><h3>Contact Christi Rich Picks</h3><p>Use the form and we'll get back to you. Please don't include passwords, payment details or other sensitive information.</p><a id="emailLink" href="mailto:hello@yourdomain.com">hello@yourdomain.com</a><div class="social-links"><a id="facebookLink" href="https://www.facebook.com/" target="_blank" rel="noopener">Facebook ↗</a><a id="whatsappLink" href="https://wa.me/" target="_blank" rel="noopener">WhatsApp ↗</a></div></div>
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success.html" class="contact-form">
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hidden"><label>Do not fill this out: <input name="bot-field"></label></p>
+          <label>Your name<input name="name" type="text" autocomplete="name" required placeholder="Your name"></label>
+          <label>Email address<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+          <label>What can we help with?<select name="topic"><option>General enquiry</option><option>Product suggestion</option><option>Partnership enquiry</option><option>Website feedback</option></select></label>
+          <label>Your message<textarea name="message" rows="4" required placeholder="Write your message..."></textarea></label>
+          <button class="button button-primary" type="submit">Send message <span>→</span></button>
+          <small>Submitting this form allows us to use your details to respond to your enquiry. See our <a href="/privacy.html">Privacy Policy</a>.</small>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-top"><a class="brand brand-footer" href="/"><span class="brand-mark">CR</span><span><strong>Christi Rich Picks</strong><small>SMART FINDS, BETTER CHOICES</small></span></a><p>Discover thoughtfully selected products<br>and make your next choice a smarter one.</p><a href="#shop" class="footer-top-link">Back to top ↑</a></div>
+    <div class="footer-bottom"><span>© <span id="year"></span> Christi Rich Picks. All rights reserved.</span><div><a href="/privacy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/disclosure.html">Affiliate disclosure</a><a href="/admin/">Admin</a></div></div>
+    <p class="footer-disclosure">Some links may be affiliate links. If you buy through them, we may earn a commission at no extra cost to you. Recommendations and retailer terms should always be checked independently.</p>
+  </footer>
+  <script src="/site-config.js"></script><script src="/app.js"></script>
+</body>
 </html>
